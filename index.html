@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .header {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Поиск минимального и максимального числа</h1>
+      <p class="all-elements"></p>
+      <button class="min">Найти минимальное число</button>
+      <button class="max">Найти максимальное число</button>
+      <p>Минимальное число: <span class="minNumber"></span></p>
+      <p>Максимальное число: <span class="maxNumber"></span></p>
+    </header>
+
+    <script>
+      // Массив с числами
+      const numbers = [12, 5, 8, 20, 3, 16];
+
+      // Находим элемент по классу
+      const paragrafhEl = document.querySelector(".all-elements");
+      // Создаем пустую переменную
+      let elementsText = "";
+
+      for (let i = 0; i < numbers.length; i++) {
+        elementsText += numbers[i]; // Добавляем элементов массива в новую переменную elementsText
+        if (i < numbers.length - 1) {
+          elementsText += ", "; // Добавляем запятую и пробел между элементами
+        }
+      }
+      paragrafhEl.textContent = `Все элементы массива: ${elementsText}`; // Добавляем текст перед элементами массива elementsText
+
+      const minNumberEl = document.querySelector(".minNumber");
+      const maxNumberEl = document.querySelector(".maxNumber");
+
+      // Находим элемент по классу и создаем обработчик события при клике
+      document.querySelector(".min").addEventListener("click", function () {
+        const minNumber = Math.min(...numbers); // Находим минимального числа
+        minNumberEl.textContent = minNumber; // Выводим на странице
+      });
+
+      // Находим элемент по классу и создаем обработчик события при клике
+      document.querySelector(".max").addEventListener("click", function () {
+        const maxNumber = Math.max(...numbers); // Находим максимального числа
+        maxNumberEl.textContent = maxNumber; // Выводим на странице
+      });
+
+      // Находим элемент по классу
+      const headerEl = document.querySelector("header");
+      // Даем этому элементу класс header
+      headerEl.classList.add("header");
+    </script>
+  </body>
+</html>
